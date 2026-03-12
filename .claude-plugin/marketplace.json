@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "investigate",
+      "name": "tellagen",
       "source": {
         "source": "github",
         "repo": "tellagen/tellagen-plugin",
