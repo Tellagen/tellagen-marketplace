@@ -4,14 +4,14 @@ Official plugin marketplace for [Tellagen](https://tellagen.com) — investigate
 
 ## Install
 
+### Claude Code (CLI)
+
 ```bash
 /plugin marketplace add tellagen/tellagen-marketplace
 /plugin install tellagen@tellagen-marketplace
 ```
 
-## Configure
-
-Add your Tellagen credentials to `~/.claude/settings.json`:
+Then add your credentials to `~/.claude/settings.json`:
 
 ```json
 {
@@ -22,27 +22,52 @@ Add your Tellagen credentials to `~/.claude/settings.json`:
 }
 ```
 
-| Variable | Description |
-|----------|-------------|
-| `TELLAGEN_API_KEY` | API key starting with `tllg_`. Create one in **Settings > API Keys**. |
-| `TELLAGEN_API_URL` | Your workspace API URL (e.g., `https://mycompany.api.tellagen.com`) |
-
 If you already have other settings in `~/.claude/settings.json`, merge the `env` block into your existing file.
+
+### Claude Desktop
+
+Add the Tellagen MCP server to your Claude Desktop config:
+
+- **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "tellagen": {
+      "command": "npx",
+      "args": ["-y", "@tellagen/mcp-server"],
+      "env": {
+        "TELLAGEN_API_KEY": "tllg_your_key_here",
+        "TELLAGEN_API_URL": "https://mycompany.api.tellagen.com"
+      }
+    }
+  }
+}
+```
+
+If you already have other MCP servers configured, merge the `tellagen` entry into your existing `mcpServers` object.
+
+### Get your API key
+
+1. Go to [app.tellagen.com](https://app.tellagen.com) → **Settings** → **API Keys**
+2. Create a key with `incidents:read` and `incidents:write` scopes
+3. Copy the key (starts with `tllg_`) and your workspace API URL
 
 ## What's included
 
 - **Tellagen MCP server** (`@tellagen/mcp-server`) — 12 tools for reading incidents, running investigations, posting findings, and promoting to timelines
-- **Investigation skill** (`/tellagen:investigate`) — structured workflow that walks Claude through a full incident investigation
+- **Investigation skill** (`/tellagen:investigate`) — structured workflow that walks Claude through a full incident investigation (Claude Code only)
 
 ## Usage
 
-Run the investigation skill in any project:
+Run the investigation skill in any project (Claude Code only):
 
 ```
 /tellagen:investigate
 ```
 
-Or ask Claude directly:
+Or ask Claude directly (both Claude Code and Claude Desktop):
 
 ```
 Investigate incident #42 on Tellagen
@@ -86,9 +111,10 @@ No extra configuration on the Tellagen side — just install the vendor MCP serv
 
 ## Requirements
 
-- [Claude Code](https://claude.ai/claude-code) v1.0.33+
 - A [Tellagen](https://tellagen.com) workspace
 - An API key with `incidents:read` and `incidents:write` scopes
+- **Claude Code:** v1.0.33+ with plugin support
+- **Claude Desktop:** latest version with MCP server support
 
 ## License
 
