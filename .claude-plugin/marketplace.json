@@ -1,28 +1,25 @@
 {
-  "name": "tellagen-plugins",
+  "name": "tellagen-marketplace",
   "owner": {
     "name": "Tellagen",
     "email": "hello@tellagen.com"
   },
   "metadata": {
     "description": "Official Tellagen plugins for Claude Code",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
   },
   "plugins": [
     {
       "name": "tellagen",
-      "source": {
-        "source": "github",
-        "repo": "tellagen/tellagen-plugin",
-        "ref": "master"
-      },
+      "source": "./plugins/tellagen",
       "description": "Tellagen incident investigation — MCP server + investigation skill for reading incidents, running AI investigations, posting findings, and building timelines.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Tellagen"
       },
       "homepage": "https://tellagen.com",
-      "repository": "https://github.com/tellagen/tellagen-plugin",
+      "repository": "https://github.com/tellagen/tellagen-marketplace",
       "license": "MIT",
       "keywords": ["incident", "investigation", "on-call", "sre", "devops"]
     }
