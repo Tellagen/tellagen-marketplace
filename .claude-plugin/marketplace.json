@@ -14,7 +14,7 @@
       "name": "tellagen",
       "source": "./plugins/tellagen",
       "description": "Tellagen incident investigation — MCP server + investigation skill for reading incidents, running AI investigations, posting findings, and building timelines.",
-      "version": "0.1.1",
+      "version": "0.4.1",
       "author": {
         "name": "Tellagen"
       },
