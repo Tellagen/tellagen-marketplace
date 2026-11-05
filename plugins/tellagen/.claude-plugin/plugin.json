@@ -1,6 +1,6 @@
 {
   "name": "tellagen",
-  "version": "0.1.1",
+  "version": "0.4.1",
   "description": "Tellagen incident investigation — MCP server + investigation skill for reading incidents, running AI investigations, posting findings, and building timelines.",
   "author": {
     "name": "Tellagen",

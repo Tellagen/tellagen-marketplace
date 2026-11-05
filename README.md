@@ -56,7 +56,7 @@ If you already have other MCP servers configured, merge the `tellagen` entry int
 
 ## What's included
 
-- **Tellagen MCP server** (`@tellagen/mcp-server`) — 12 tools for reading incidents, running investigations, posting findings, and promoting to timelines
+- **Tellagen MCP server** (`@tellagen/mcp-server`) — 46 tools for reading incidents, running investigations, posting findings, and promoting to timelines
 - **Investigation skill** (`/tellagen:investigate`) — structured workflow that walks Claude through a full incident investigation (Claude Code only)
 
 ## Usage
