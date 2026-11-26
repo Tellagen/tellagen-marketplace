@@ -1,0 +1,38 @@
+name: Plugin copy
+
+# plugins/tellagen is a copy of Tellagen/tellagen-plugin, and it is what people
+# install. This check fails when the copy differs from the plugin's master, on
+# a pull request here and once a day, so a plugin change that never reached the
+# marketplace shows up as a red run.
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: plugin-copy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: The copy equals the plugin
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Tellagen/tellagen-plugin
+          path: .plugin-source
+          persist-credentials: false
+      - name: Compare plugins/tellagen with the plugin
+        run: sh .plugin-source/scripts/sync-marketplace.sh --check .
